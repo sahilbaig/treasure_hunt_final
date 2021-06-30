@@ -9,7 +9,7 @@ import os
 
 app= Flask(__name__)
 app.config['SECRET_KEY']= 'MEOWMEOW'
-app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('HEROKU_POSTGRESQL_PURPLE_URL')
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)

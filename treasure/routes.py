@@ -45,7 +45,7 @@ def questions(number):
     if (number-1)!=current_user.score:
         return render_template('cheat.html')
     else:
-        show= ''Questions.query.filter_by(id=number).first()''
+        show= Questions.query.filter_by(id=number).first()
         form=Answer()
         image_file = url_for('static', filename=str(number)+'.jpg')
         if form.validate_on_submit():

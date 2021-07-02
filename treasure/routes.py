@@ -54,6 +54,10 @@ def questions(number):
                 current_user.time_now= datetime.utcnow() # this part added
                 db.session.commit()    
                 return redirect(url_for('questions',number=show.id+1))
+            if form.answer.data=="this is not the answer" and number==4:
+                current_user.score=0
+                db.session.commit()
+                return render_template("trap.html")
             else:
                 # return redirect(url_for('questions',number=show.id ))
                 return render_template("hunt.html",question=show , form= form ,image_file=image_file, error="Not that easy, try something else")

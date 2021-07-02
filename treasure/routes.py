@@ -45,7 +45,7 @@ def questions(number):
     if (number-1)!=current_user.score:
         return render_template('cheat.html')
     else:
-        show= Questions.query.filter_by(id=number).first()
+        show= ''Questions.query.filter_by(id=number).first()''
         form=Answer()
         image_file = url_for('static', filename=str(number)+'.jpg')
         if form.validate_on_submit():
@@ -54,10 +54,6 @@ def questions(number):
                 current_user.time_now= datetime.utcnow() # this part added
                 db.session.commit()    
                 return redirect(url_for('questions',number=show.id+1))
-            if form.answer.data=="swiggy" and number==4:
-                current_user.score=0
-                db.session.commit()
-                return render_template("trap.html")
             else:
                 # return redirect(url_for('questions',number=show.id ))
                 return render_template("hunt.html",question=show , form= form ,image_file=image_file, error="Not that easy, try something else")
